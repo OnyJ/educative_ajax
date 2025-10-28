@@ -89,6 +89,7 @@ Google Maps : vous déplacez la carte, de nouvelles zones se chargent dynamiquem
 Je vais vous montrer la différence :
 
 **Site SANS AJAX :**
+
 - Clic sur un bouton → Toute la page se recharge
 - Temps d'attente visible
 - Perte du contexte (scroll position, etc.)
@@ -159,6 +160,7 @@ Imaginez que vous êtes dans un restaurant :
 - **Serveur** : Va en cuisine, revient avec la pizza
 
 **Sur le web, c'est pareil :**
+
 - **Votre navigateur (Client)** : Demande des données
 - **Serveur** : Traite la demande, envoie la réponse
 - **Votre navigateur** : Affiche les données
@@ -175,6 +177,7 @@ Client (Navigateur) → Requête → Serveur
 C'est un "menu" que le serveur met à disposition. Au lieu de dire "je veux une pizza", on dit "je veux les données de l'utilisateur 123".
 
 **Exemple concret :**
+
 - **URL** : `https://api.quotable.io/quotes/random`
 - **Ce que ça fait** : Donne une citation aléatoire
 - **Gratuit** : Pas d'inscription, pas de clé
@@ -223,6 +226,7 @@ Le serveur répond toujours avec un **code de statut** :
 La plupart des APIs modernes suivent le principe **REST** (Representational State Transfer).
 
 **Principes REST :**
+
 - Utilise les méthodes HTTP standards (GET, POST, etc.)
 - URLs claires et logiques : `/users/123`, `/movies/550`
 - Sans état (stateless) : chaque requête est indépendante
@@ -232,6 +236,7 @@ La plupart des APIs modernes suivent le principe **REST** (Representational Stat
 Les requêtes et réponses contiennent des **headers** (en-têtes), comme les métadonnées.
 
 **Exemples courants :**
+
 ```javascript
 Content-Type: application/json  // Type de données
 Authorization: Bearer TOKEN      // Authentification
@@ -251,11 +256,33 @@ Aujourd'hui, presque tout le web utilise HTTPS. Toutes nos APIs du cours aussi.
 
 ## 3 - Première Requête avec Fetch
 
+### Instant Terminal
+
+> Ouvrir le terminal "git bash"
+
+- `mkdir mon_dossier`: make directory -> permet de créer un dossier `mon_dossier`
+- `cd Documents/mes_scripts/` : change directory -> se déplacer vers un dossier `Documents/mes_scripts/`  . Pour aller dans un dossier parent, faire `cd ..` (ou `../../../` etc)
+- `pwd` : voir le chemin où je me situe
+- `ls` : lister ce qui est dans mon dossier / OU ls -a
+- `touch monFichier`: créer un fichier `monFichier` 
+- `mv` : move / déplacer un élément (fichier ou dossier) / OU renommer un dossier
+- `rm monFichier` : supprime un fichier / OU `rm -r monDossier` supprimer mon dossier
+- `cp` : copy -> copier un fichier vers un autre endroit, ex: `cp abc Documents/abc` copie abc vers `Documents/abc`
+
+Raccourcis Terminal
+
+- ctrl u : supprimer toute la ligne
+- ctrl a : aller au début de la ligne
+- ctrl e : aller à la fin de la ligne
+- ctrl w : pour supprimer un mot de droite à gauche
+
 ### L'essentiel
 
 #### Qu'est-ce que Fetch ?
 
 `fetch()` est une fonction JavaScript moderne pour faire des requêtes HTTP.
+
+En savoir plus sur fetch => [ici](https://www.w3schools.com/js/js_api_fetch.asp)
 
 **Syntaxe de base :**
 
@@ -282,6 +309,12 @@ On va utiliser l'API **Quotable** qui donne des citations aléatoires.
 
 ```javascript
 fetch('https://api.quotable.io/quotes/random')
+```
+
+ou
+
+```javascript
+fetch('https://api.thecatapi.com/v1/images/search')
 ```
 
 **Résultat :** `Promise {<pending>}`
@@ -389,7 +422,7 @@ fetch('https://api.quotable.io/quotes/random')
 
 💡 **Astuce :** Rafraîchissez plusieurs fois (ou relancez la commande), vous aurez des citations différentes !
 
-### ALLONS PLUS LOIN
+### ALLONS PLUS LOIN (mais ça reste vital de le savoir)
 
 #### Gestion d'Erreurs avec .catch()
 
@@ -462,6 +495,7 @@ C'est un format de données texte, facile à lire pour les humains ET les machin
 **Ressemble à un objet JavaScript, non ?** C'est volontaire !
 
 **Différences :**
+
 - JSON : Clés entre **guillemets** `"name"`
 - JavaScript : Clés sans guillemets `name` (optionnel)
 
@@ -497,6 +531,7 @@ fetch('https://api.quotable.io/quotes/random')
 ```
 
 **Résultat :**
+
 ```
 Citation: The only way to do great work is to love what you do.
 Auteur: Steve Jobs
@@ -509,6 +544,31 @@ Tags: ["famous-quotes"]
 - `data.author` → L'auteur
 - `data.tags` → Array de tags
 - `data.tags[0]` → Premier tag
+
+Typiquement cette technique nous permet de récupérer une info précise dans un objet qui pourrait être immense. Ex: 
+
+```js
+const data = {
+  user: {
+    pictures: {
+      cat_pictures: [
+        { name: "pic1", url: "https://cat.com" },
+        { name: "pic2", url: "https://cat.com" },
+        { name: "pic3", url: "https://cat.com" },
+        { name: "pic4", url: "https://cat.com" },
+      ],
+    },
+  },
+};
+```
+
+Pour récupérer la dernière url de chat dispo, on ferait:
+
+```javascript
+console.log(data.user.pictures.cat_pictures[3].url);
+```
+
+
 
 #### Afficher dans la Page HTML
 
@@ -569,6 +629,7 @@ const html = '<p>"' + data.content + '"</p><p>— ' + data.author + '</p>';
 ```
 
 **Avec template literals (moderne) :**
+
 ```javascript
 const html = `
   <p>"${data.content}"</p>
@@ -677,9 +738,16 @@ Maintenant l'UX est meilleure !
 
 #### Énoncé du Projet
 
-**Objectif :** Créer une application fun qui affiche des citations aléatoires ET une galerie de photos de chats.
+**Objectif :** Créer une application fun qui affiche ~~des citations aléatoires ET~~ une galerie de photos de chats.
+
+![CatQuatre_P1](/home/josselin/Dev/tmp_notes/educative_ajax/assets/CatQuatre_P1.png)
+
+![CatQuatre_P2](/home/josselin/Dev/tmp_notes/educative_ajax/assets/CatQuatre_P2.png)
+
+
 
 **Pourquoi ce projet ?**
+
 - Pratique de 2 APIs différentes
 - Révision HTML/CSS
 - Manipulation du DOM
