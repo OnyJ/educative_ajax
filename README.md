@@ -6,7 +6,7 @@
 
 ## 📚 Vue d'Ensemble
 
-Ce cours de 3 jours vous emmène de zéro à la création d'une application complète de recherche de films (FlixSearch - mini-Netflix) en utilisant l'API TMDB.
+Ce cours de 3 jours vous emmène de zéro à la création d'une application complète de recherche de films (Netflex - mini-Netflix) en utilisant l'API TMDB.
 
 **Progression :**
 - **Jour 1** : Fondations AJAX & Quote/Cat Gallery
@@ -275,7 +275,7 @@ code .
 # Lancer (Live Server ou ouvrir index.html)
 ```
 
-### Jour 2-3 : FlixSearch
+### Jour 2-3 : Netflex
 
 ```bash
 # Utiliser le starter fourni
