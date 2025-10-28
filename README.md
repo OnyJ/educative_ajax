@@ -83,7 +83,6 @@ educative_ajax/
   - Search bar fonctionnelle
   - Grille de films avec affiches
   - Loading states
-  - Starter minimal fourni
 
 ---
 
