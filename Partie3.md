@@ -377,9 +377,26 @@ Alternative au debouncing : Limiter à X requêtes par seconde.
 
 ## Etape 6 - Pimper Netflex
 
-### Comment Polish ? CSS Netflix-like, responsive
+> Extensions du projet - CSS Netflix-like, responsive...
 
 - Scroll Lock  
   Quand le modal est ouvert, empêcher le scroll de la page
 - Animations  
   Ajouter des transitions CSS
+
+Si ce n'est pas déjà fait :
+
+- Films populaires affichés au chargement (avant recherche)
+- Afficher la date de sortie et synopsis court
+- Hover effect sur les cards
+- Loading spinner animé
+
+- Filtrer par année de sortie
+- Pagination (bouton "Charger plus")
+- Afficher le nombre de résultats trouvés
+- Vider la recherche (bouton X)
+
+- Plusieurs pages (Accueil / Recherche / Trending)
+- Catégories (Action, Comédie, etc.)
+- Tri (par note, par date, etc.)
+- Animations avancées
